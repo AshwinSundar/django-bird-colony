@@ -1,8 +1,11 @@
 from dotenv import load_dotenv
 from django.core.management.utils import get_random_secret_key
+from pathlib import Path
 import os
 
 load_dotenv()
+
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Ensures env variables are defined
 missingEnv = False
@@ -26,7 +29,7 @@ if USE_SQLITE == "True":
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
-            "NAME": "../db.sqlite3",
+            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
         }
     }
 
@@ -91,4 +94,6 @@ USE_I18N = True
 USE_TZ = True
 
 DEBUG = os.getenv("DEBUG") == "True"
+STATIC_ROOT = os.path.join(BASE_DIR, "birds/collected_static")
+STATIC_URL = os.path.join(BASE_DIR, "birds/static/")
 ROOT_URLCONF = "birds.urls"

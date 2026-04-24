@@ -5,4 +5,8 @@ run:
 
 configure:
 	[ -f ".env" ] || cp .env.example .env
+	[ -f ".venv/" ] || python3 -m venv .venv
+	uv sync
+	.venv/bin/python3 manage.py collectstatic --no-input
+
 
