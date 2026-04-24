@@ -96,4 +96,4 @@ USE_TZ = True
 DEBUG = os.getenv("DEBUG") == "True"
 STATIC_ROOT = os.path.join(BASE_DIR, "birds/collected_static")
 STATIC_URL = os.path.join(BASE_DIR, "birds/static/")
-ROOT_URLCONF = "birds.urls"
+ROOT_URLCONF = "birds.project_urls"
