@@ -20,7 +20,7 @@ if "USE_SQLITE" not in os.environ:
     varsMissing.append("USE_SQLITE")
 
 if missingEnv:
-    raise EnvironmentError("env variables not defined: ", varsMissing)
+    raise EnvironmentError(f"Your .env file is missing some definitions: {varsMissing}")
 
 DEBUG = os.getenv("DEBUG") == "True"
 USE_SQLITE = os.getenv("USE_SQLITE")
